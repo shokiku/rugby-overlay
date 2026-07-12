@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>使い方 — Rugby Overlay</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; background:#0b0d11; color:#eef1f7; line-height:1.8;
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:56px 24px 80px; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  .tagline { color:#aab2c4; font-size:14px; margin:0 0 32px; }
+  h2 { font-size:19px; color:#f4b740; margin:56px 0 10px; padding-top:8px; border-top:1px solid #2b3140; }
+  h3 { font-size:15px; color:#eef1f7; margin:28px 0 6px; }
+  p, li { font-size:14px; color:#c7cddb; }
+  a { color:#7fb2ff; }
+  img { max-width:100%; border-radius:8px; border:1px solid #2b3140; margin:10px 0 4px; display:block; }
+  .cap { color:#828b9e; font-size:12px; margin:0 0 20px; }
+  .note { color:#828b9e; font-size:12px; }
+  .tip { background:#141a26; border-left:4px solid #f4b740; border-radius:4px; padding:10px 16px; margin:14px 0; font-size:13px; color:#c7cddb; }
+  .toc { background:#10131a; border:1px solid #2b3140; border-radius:8px; padding:18px 24px; }
+  .toc ol { margin:0; padding-left:20px; }
+  .toc li { margin:2px 0; }
+  kbd { background:#1a2233; border:1px solid #39415a; border-radius:4px; padding:1px 7px; font-size:12px; font-family:inherit; }
+  table { border-collapse:collapse; font-size:13px; }
+  td, th { border:1px solid #2b3140; padding:6px 12px; color:#c7cddb; text-align:left; }
+  footer { margin-top:64px; border-top:1px solid #2b3140; padding-top:16px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="note"><a href="./">← Rugby Overlay トップへ</a></p>
+  <h1>Rugby Overlay の使い方</h1>
+  <p class="tagline">動画を読み込み、試合を見ながらボタンで記録し、書き出す。この3ステップですべての機能を説明します。</p>
+
+  <div class="toc">
+    <ol>
+      <li><a href="#install">インストール</a></li>
+      <li><a href="#open">動画を読み込む（.MTSの変換）</a></li>
+      <li><a href="#team">チームを設定する（名前・色・ロゴ・選手）</a></li>
+      <li><a href="#clock">試合クロック（前半・ハーフタイム・後半・ノーサイド）</a></li>
+      <li><a href="#record">得点・イベントを記録する</a></li>
+      <li><a href="#summary">試合終了サマリー</a></li>
+      <li><a href="#export">全編を書き出す</a></li>
+      <li><a href="#highlight">ハイライトを書き出す</a></li>
+      <li><a href="#chapters">YouTubeチャプター</a></li>
+      <li><a href="#license">ライセンス登録（透かしの解除）</a></li>
+      <li><a href="#update">アップデート</a></li>
+      <li><a href="#tips">便利な操作</a></li>
+      <li><a href="#faq">困ったときは</a></li>
+    </ol>
+  </div>
+
+  <h2 id="install">1. インストール</h2>
+  <p>ダウンロードしたzipを開くと現れる <b>RugbyOverlay-x.x.x-arm64.dmg</b> をダブルクリックし、<b>Rugby Overlay.app</b> をアプリケーションフォルダへドラッグしてください。アプリはAppleの公証（ノータリゼーション）を受けているので、初回起動時の確認ダイアログで「開く」を押すだけで使えます。</p>
+  <p class="note">動作環境: Apple Silicon Mac（M1以降）。Intel Mac・Windowsでは動作しません。</p>
+
+  <h2 id="open">2. 動画を読み込む</h2>
+  <img src="usage/01-open-video.jpg" alt="起動直後の画面">
+  <p class="cap">起動直後の画面。「動画を選ぶ」から試合の映像を開きます。</p>
+  <p>対応形式は <b>.mp4 / .mov</b>（ブラウザで再生できる形式）。iPhoneで撮影した動画（4K・60fps・HDR）もそのまま読み込めます。</p>
+  <h3>AVCHDカメラの .MTS ファイル</h3>
+  <img src="usage/02-video-menu.jpg" alt="動画メニュー">
+  <p class="cap">「動画 ▾」メニューの「MTSを変換して読み込む…」で、.MTSを無劣化でmp4に変換してそのまま開けます。</p>
+  <h3>試合データは自動保存</h3>
+  <p>動画を読み込むと、同じ場所に「<b>動画名.json</b>」が自動で作られ、記録した内容は操作のたびに自動保存されます。次に同じ動画を開くと自動で再開します。保存先の変更・別ファイルの読み込みは 設定 → プロジェクト から。別の試合を始めるときは画面左下の「新規プロジェクト」を押してから動画を選んでください。</p>
+
+  <h2 id="team">3. チームを設定する</h2>
+  <p>画面右のチームカード（上=ホーム・下=アウェイ）で設定します。</p>
+  <img src="usage/18-team-cards.jpg" alt="チームカード" style="max-width:420px;">
+  <p class="cap">チームカード。名前・カラー2色・ロゴ・選手をここから設定します。カードの下が得点ボタン、中央が試合クロックです。</p>
+  <ul>
+    <li><b>チーム名</b> — カードの名前欄に入力。スコアボードにはこの名前が表示されます</li>
+    <li><b>チームカラー</b> — 名前の右の色ボックスから選択。2色目を設定すると上下2色のジャージ風になります</li>
+    <li><b>ロゴ</b> — 「ロゴ」ボタンから画像を選択（任意）。スコアボードに表示されます</li>
+    <li><b>選手</b> — 「選手」ボタン、または 設定 → 選手 で背番号ごとに名前を登録。CSV（number,name）の読み込み・書き出しもできます</li>
+  </ul>
+  <img src="usage/14-settings-roster.jpg" alt="設定画面の選手名簿">
+  <p class="cap">設定画面。選手名簿のCSV入出力、イベント名リスト、スコアボードの表示位置（左上・中央上・右上）もここで変更できます。</p>
+
+  <h2 id="clock">4. 試合クロック</h2>
+  <p>キックオフの瞬間に「<b>前半</b>」を押すと、映像に合わせて試合クロックが動き始めます。以降、「<b>ハーフタイム</b>」（クロック停止）→「<b>後半</b>」（再開）→「<b>ノーサイド</b>」（停止）を、映像のその瞬間に押すだけです。</p>
+  <p>押した区切りはイベント一覧に「区切り」として記録され、後から時刻を修正できます（押し遅れても大丈夫です）。</p>
+
+  <h2 id="record">5. 得点・イベントを記録する</h2>
+  <h3>得点</h3>
+  <p>得点が決まった瞬間に、そのチームの <b>トライ(+5)／ゴール(+2)／PG(+3)／DG(+3)</b> ボタンを押します。押すと動画が一時停止し、選手を選べます（選手なしでもOK）。スコアボードのスコアは自動で加算され、テロップ（「トライ #14 ウイングさん」など）が数秒間表示されます。</p>
+  <img src="usage/04-player-picker.jpg" alt="選手選択">
+  <p class="cap">得点ボタンを押すと選手を選択。名簿を登録していれば名前で表示されます。</p>
+  <h3>イベント（好プレー・ペナルティなど）</h3>
+  <img src="usage/05-event-modal.jpg" alt="イベント記録">
+  <p class="cap">「イベント」ボタンで種類・チーム・選手・説明を記録。種類は 設定 → イベント名リスト で自由に追加できます。</p>
+  <p>イベントは得点になりませんが、ハイライトやチャプターの材料になります。「ナイスプレー」「ペナルティ」など、あとで見返したい瞬間を気軽に記録してください。</p>
+  <h3>記録の修正</h3>
+  <img src="usage/03-main-editing.jpg" alt="イベントの編集">
+  <p class="cap">右下のイベント欄で「▲前 / 次▼」で記録を行き来し、選択中のイベントを編集できます。</p>
+  <ul>
+    <li><b>頭出しから再生</b> — イベントの少し前（リード秒。既定10秒）から再生して確認</li>
+    <li><b>リード秒</b> — ハイライトでこのイベントの何秒前から収録するか</li>
+    <li><b>現在の再生位置を「イベント時刻に／頭出し時刻に」</b> — 映像を見ながら時刻を正確に合わせ直す</li>
+    <li><b>選手の変更・テロップのON/OFF・イベントの削除</b>もここから</li>
+  </ul>
+  <img src="usage/06-timeline.jpg" alt="タイムライン">
+  <p class="cap">メイン画面を下へスクロールするとタイムライン一覧があり、全記録を見渡して確認・編集できます。</p>
+
+  <h2 id="summary">6. 試合終了サマリー</h2>
+  <img src="usage/07-summary.jpg" alt="サマリープレビュー">
+  <p class="cap">「サマリー」ボタンでプレビュー。書き出すと動画の末尾に数秒間表示されます。</p>
+  <p>最終スコア・前後半の内訳・種別ごとのスタッツ・得点タイムラインを、動画の最終フレームを背景に表示します。設定 → 試合終了サマリー でON/OFFと表示秒数を変更できます。プレビューを閉じると、見ていた再生位置に戻ります。</p>
+
+  <h2 id="export">7. 全編を書き出す</h2>
+  <img src="usage/08-export-menu.jpg" alt="書き出しメニュー">
+  <p class="cap">「書き出し ▾」→「全編を書き出す…」</p>
+  <img src="usage/10-save-dialog.jpg" alt="保存先の選択">
+  <p class="cap">保存先と名前を決めると書き出しが始まります。</p>
+  <img src="usage/11-export-progress.jpg" alt="書き出し進捗">
+  <p class="cap">進捗は画面下部に表示。書き出し中もアプリの操作はできます。</p>
+  <img src="usage/12-export-done.jpg" alt="書き出し完了">
+  <p class="cap">完了すると保存先が表示されます。スコアボード・クロック・テロップ・サマリーがすべて焼き込まれたmp4ができています。</p>
+  <p class="note">時間の目安: 90分の試合でおよそ15分（M1 Pro・フルHDの場合）。iPhoneのHDR動画は色変換が必要なため、動画の実時間程度かかります。</p>
+
+  <h2 id="highlight">8. ハイライトを書き出す</h2>
+  <img src="usage/09-highlight-modal.jpg" alt="ハイライト書き出し">
+  <p class="cap">「書き出し ▾」→「ハイライトを書き出す…」。収録シーンの一覧と合計時間を確認してから書き出せます。</p>
+  <ul>
+    <li><b>得点シーンを含める／イベントを含める</b> — ハイライトに入れる記録の種類を選択</li>
+    <li><b>イベント後の秒数</b> — 各シーンをイベント時刻の何秒後まで収録するか（前は各イベントのリード秒）</li>
+    <li><b>連結して1本にする</b>／<b>イベントごとの個別クリップ</b>／<b>両方</b> — 出力形式を選択</li>
+  </ul>
+  <p>各シーンにもスコアボードとテロップが焼き込まれます。SNS共有には連結1本、チーム内での振り返りには個別クリップが便利です。</p>
+
+  <h2 id="chapters">9. YouTubeチャプター</h2>
+  <img src="usage/13-chapters.jpg" alt="YouTubeチャプター">
+  <p class="cap">「チャプター」ボタンで目次テキストを生成。「コピー」してYouTubeの説明欄に貼り付けるだけです。</p>
+  <p>前半開始・各得点・イベントの時刻から自動生成されます。YouTubeにアップした全編動画の説明欄に貼ると、再生バーに目次が表示され、見たい場面へすぐ飛べます（間隔が近い項目は自動でまとめられます）。</p>
+
+  <h2 id="license">10. ライセンス登録（透かしの解除）</h2>
+  <img src="usage/17-trial-watermark.jpg" alt="体験版の透かし">
+  <p class="cap">体験版（未登録）の書き出しには、中央に動作確認用の透かしが入ります。機能の制限はありません。</p>
+  <p>ライセンスキーを購入・登録すると透かしが消えます。登録は 設定 → ライセンス にキー全体（RGBY1.〜）を貼り付けて「登録」を押すだけ。</p>
+  <img src="usage/15-settings-license.jpg" alt="設定のライセンス欄">
+  <p class="cap">設定画面のライセンス欄。「解除」で体験版に戻すこともできます。</p>
+  <img src="usage/16-licensed.jpg" alt="登録済みの表示">
+  <p class="cap">登録されると画面右下に「🔑 ライセンス: 表示名」と表示されます。キーはアップデート後もそのまま有効です。</p>
+
+  <h2 id="update">11. アップデート</h2>
+  <p>起動時に新バージョンの有無を確認し、新しいバージョンがあると画面下部でお知らせします（バージョン番号等の小さな情報を受信するだけで、こちらから情報を送信することはありません。設定 → 情報 でオフにできます）。新しいバージョンは入手先から再ダウンロードし、アプリケーションフォルダへ上書きしてください。ライセンスキーと試合データはそのまま引き継がれます。</p>
+
+  <h2 id="tips">12. 便利な操作</h2>
+  <ul>
+    <li><kbd>←</kbd> <kbd>→</kbd> を押している間、コマ送り／コマ戻しできます（得点の瞬間合わせに便利）</li>
+    <li>イベント欄の「▲前 / 次▼」で記録済みイベントを順に確認、「頭出しから再生」でそのシーンだけ再生</li>
+    <li>記録ボタンを押すと動画が自動で一時停止するので、プレーを見ながら押して、止まってから詳細を入力できます</li>
+    <li>チーム設定・選手名簿・イベント名リストは次の試合に引き継がれます。毎回入力し直す必要はありません</li>
+  </ul>
+
+  <h2 id="faq">13. 困ったときは</h2>
+  <ul>
+    <li><b>.MTSがプレビューで再生できない</b> — 仕様です。「動画 ▾」→「MTSを変換して読み込む…」で変換してから開いてください（無劣化・高速です）</li>
+    <li><b>iPhoneの動画の書き出しが遅い</b> — HDR動画（iPhoneの既定設定）は色変換のため、動画の実時間程度かかります。故障ではありません</li>
+    <li><b>書き出した動画の中央に文字が入る</b> — 体験版の透かしです。ライセンス登録で消えます（<a href="#license">10章</a>）</li>
+    <li><b>ライセンスキーをなくした</b> — 購入したストアのメッセージからご連絡ください。購入記録を確認して再送します</li>
+    <li><b>その他の不具合・質問</b> — 入手先ストアのメッセージからお気軽にどうぞ。アプリのバージョン（設定 → 情報）とmacOSのバージョン、お使いの動画の種類を添えていただけると解決が早くなります</li>
+  </ul>
+
+  <footer>
+    <p class="note"><a href="./">← Rugby Overlay トップへ</a> ／ © 2026 Shoji Kikuchi</p>
+  </footer>
+</main>
+</body>
+</html>
